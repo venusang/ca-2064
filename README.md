@@ -3,8 +3,7 @@
 This is a static prototype that can be viewed at http://missdemilo.com/cs/ca-2064.
 
 My Role:
-- UI Designer
-- UI/UX Designer
+- UI and UX Designer
 - Front-End Web Developer
 
 This prototype was built using the following technologies:
