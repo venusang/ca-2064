@@ -17,6 +17,6 @@ These packages were used:
 - chosen_v1.2.0 (http://harvesthq.github.io/chosen/)
 - Bootstrap 3.1.1 (http://getbootstrap.com)
 - Font Awesome 4.0.3 (http://fontawesome.io/)
-- 
+ 
 Disclaimer:
 - I am going to openly admit that the file structure does not follow best practices.  What can I say, I had to build this complicated bad boy in a few days.
