@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script data-require="jquery@*" data-semver="2.1.1" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script data-require="bootstrap@3.1.1" data-semver="3.1.1" src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
+  <link data-require="fontawesome@4.0.3" data-semver="4.0.3" rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
+  <link data-require="bootstrap-css@3.2.0" data-semver="3.2.0" rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+  <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  
+  <script src="http://code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+  <script src="chosen_v1.2.0/chosen.jquery.js"></script>
+  <link rel="stylesheet" href="chosen_v1.2.0/chosen.css" />
+  <link rel="stylesheet" href="build.css" />
+  
+
+  <link href="mbExtruder.css" media="all" rel="stylesheet" type="text/css">
+  <script type="text/javascript" src="inc/jquery.hoverIntent.min.js"></script>
+  <script type="text/javascript" src="inc/jquery.mb.flipText.js"></script>
+  <script type="text/javascript" src="inc/mbExtruder.js"></script>
+  
+
+  <script src="ca-2064.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+<div class="container-fluid">
+  <div class="row">
+  <div class="nav-container">
+        <nav class="navbar navbar-default">
+          <ul class="list-unstyled list-inline">
+            <li><div class="title-nav">Untitled Item</div></li>
+            <li><a class="btn btn-warning" id="btn-edit-item">edit item</a></li>
+          </ul>
+          <ul class="nav navbar-nav">
+            <li class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle">File <span class="caret"></span></a>
+              <ul class="dropdown-menu dropdown-menu-general">
+                <li><a href="" id="nav-new" target="">New</a></li>
+                <li><a href="" id="nav-open">Open...</a></li>
+                <li><a href="">Close</a></li>
+                <li><a href="" id="nav-copy">Copy...</a></li>
+                <li role="presentation" class="divider"></li>
+                <li><a href="" id="nav-feedback" class="section">Feedback</a></li>
+                <li><a href="" class="section" id="nav-scoring">Scoring</a></li>
+                <li role="presentation" class="divider"></li>
+                <li><a href="" id="nav-archive">Archive</a></li>
+                <li><a href="" id="nav-delete">Delete</a></li>
+              </ul>
+            </li>
+            <li class="dropdown elements-menu"><a data-toggle="dropdown" class="dropdown-toggle">Elements<span class="caret"></span></a> 
+              <ul class="dropdown-menu dropdown-menu-general">
+                <li><a href="" id="nav-elements" class="elements">Open Elements in New Window <i class="fa fa-external-link-square"></i></a></li>
+                <li><a href="" id="nav-profile" class="section">Profile</a></li>
+                <li><a href="" id="nav-metadata" class="section text-left">Additional Metadata</a></li>
+                <li role="presentation" class="divider"></li>
+                <li><a id="nav-add-supporting-materials" href="" class="section">Add Supporting Materials</a></li>
+                <li><a href="" id="nav-edit-filename1" class="section">Filename 1</a></li>
+                <li><a href="" id="nav-edit-filename2" class="section">Filename 2</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle">Help<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="" class="help">Item 1</a></li>
+                <li><a href="" class="help">Item 2</a></li>
+              </ul>
+            </li>
+          </ul>
+          
+        </nav>
+
+
+<div class="wiggi-wiz-toolbar ng-scope">
+<div class="btn-group">
+<styleselector editor="editor" formatting="blockquote h1 h2 h3" class="ng-isolate-scope"><div class="btn-group">
+  <button type="button" class="btn btn-default btn-sm btn-small ng-binding" ng-click="toggleDropDown()">
+    Normal
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu ng-hide" ng-show="dropDownVisible">
+    <!-- ngRepeat: style in styles --><li ng-repeat="style in styles" class="ng-scope">
+      <button ng-bind-html="tag(style)" ng-click="selectStyle(style)" class="ng-binding"><undefined class="style-selector-tag">Normal</undefined></button>
+    </li><!-- end ngRepeat: style in styles --><li ng-repeat="style in styles" class="ng-scope">
+      <button ng-bind-html="tag(style)" ng-click="selectStyle(style)" class="ng-binding"><blockquote class="style-selector-tag">Quote</blockquote></button>
+    </li><!-- end ngRepeat: style in styles --><li ng-repeat="style in styles" class="ng-scope">
+      <button ng-bind-html="tag(style)" ng-click="selectStyle(style)" class="ng-binding"><h1 class="style-selector-tag">Header 1</h1></button>
+    </li><!-- end ngRepeat: style in styles --><li ng-repeat="style in styles" class="ng-scope">
+      <button ng-bind-html="tag(style)" ng-click="selectStyle(style)" class="ng-binding"><h2 class="style-selector-tag">Header 2</h2></button>
+    </li><!-- end ngRepeat: style in styles --><li ng-repeat="style in styles" class="ng-scope">
+      <button ng-bind-html="tag(style)" ng-click="selectStyle(style)" class="ng-binding"><h3 class="style-selector-tag">Header 3</h3></button>
+    </li><!-- end ngRepeat: style in styles -->
+  </ul>
+</div></styleselector>
+</div>
+<div class="btn-group">
+<button class="btn btn-default btn-sm btn-small" tabindex="-1" ng-class="{active: state.bold}" ng-click="toolbarButtonClicked('bold')">
+<i class="fa fa-bold"></i>
+</button>
+<button class="btn btn-default btn-sm btn-small" tabindex="-1" ng-class="{active: state.italic}" ng-click="toolbarButtonClicked('italic')">
+<i class="fa fa-italic"></i>
+</button>
+<button class="btn btn-default btn-sm btn-small" tabindex="-1" ng-class="{active: state.underline}" ng-click="toolbarButtonClicked('underline')">
+<i class="fa fa-underline"></i>
+</button>
+<button class="btn btn-default btn-sm btn-small" tabindex="-1" ng-class="{active: state.superscript}" ng-click="toolbarButtonClicked('superscript')">
+<i class="fa fa-superscript"></i>
+</button>
+<button class="btn btn-default btn-sm btn-small" tabindex="-1" ng-class="{active: state.subscript}" ng-click="toolbarButtonClicked('subscript')">
+<i class="fa fa-subscript"></i>
+</button>
+</div>
+<div class="btn-group">
+<button class="btn btn-default btn-sm btn-small" tabindex="-1" ng-class="{active: state.insertunorderedlist}" ng-click="toolbarButtonClicked('insertunorderedlist')">
+<i class="fa fa-list-ul"></i>
+</button>
+<button class="btn btn-default btn-sm btn-small" tabindex="-1" ng-class="{active: state.insertorderedlist}" ng-click="toolbarButtonClicked('insertorderedlist')">
+<i class="fa fa-list-ol"></i>
+</button>
+</div>
+<div class="btn-group">
+<button class="btn btn-default btn-sm btn-small" tabindex="-1" ng-class="{active: state.justifyLeft}" ng-click="toolbarButtonClicked('justifyLeft')">
+<i class="fa fa-align-left"></i>
+</button>
+<button class="btn btn-default btn-sm btn-small" tabindex="-1" ng-class="{active: state.justifyCenter}" ng-click="toolbarButtonClicked('justifyCenter')">
+<i class="fa fa-align-center"></i>
+</button>
+<button class="btn btn-default btn-sm btn-small" tabindex="-1" ng-class="{active: state.justifyRight}" ng-click="toolbarButtonClicked('justifyRight')">
+<i class="fa fa-align-right"></i>
+</button>
+<button class="btn btn-default btn-sm btn-small" tabindex="-1" ng-click="toolbarButtonClicked('indent')">
+<i class="fa fa-indent"></i>
+</button>
+<button class="btn btn-default btn-sm btn-small" tabindex="-1" ng-click="toolbarButtonClicked('outdent')">
+<i class="fa fa-dedent"></i>
+</button>
+</div>
+<div class="btn-group">
+  <button type="button" class="btn btn-default btn-sm btn-small" ng-click="showDropdown(this)" data-toggle="dropdown">
+    <i class="fa fa-text-height"></i>
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu">
+<li>
+ <a ng-click="toolbarButtonClicked('line-height-1.0')">1.0</a>
+</li>
+<li>
+ <a ng-click="toolbarButtonClicked('line-height-1.5')">1.5</a>
+</li>
+<li>
+ <a ng-click="toolbarButtonClicked('line-height-2.0')">2.0</a>
+</li>
+  </ul>
+</div>
+<div class="btn-group">
+<button class="btn btn-default btn-sm btn-small" tabindex="-1" ng-click="toolbarButtonClicked('hr')">
+<i class="fa fa-minus"></i>
+</button>
+</div>
+<div class="btn-group">
+<button class="btn btn-default btn-sm btn-small" tabindex="-1" ng-click="toolbarButtonClicked('image')">
+<i class="fa fa-picture-o"></i>
+</button>
+</div>
+<div class="btn-group">
+<button class="btn btn-default btn-sm btn-small" tabindex="-1" ng-click="toolbarButtonClicked('table')">
+<i class="fa fa-table"></i>
+</button>
+</div><div class="btn-group">
+  <button type="button" class="btn btn-default btn-sm btn-small" ng-click="showDropdown(this)" data-toggle="dropdown">
+    Answer Type
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu">
+<li class="dropdown-header"><b>Fixed Choice</b></li><li>
+ <a ng-click="toolbarButtonClicked('corespring-multiple-choice')">Multiple Choice</a>
+</li>
+<li>
+ <a ng-click="toolbarButtonClicked('corespring-inline-choice')">Drop Down Choice</a>
+</li>
+
+<li>
+ <a ng-click="toolbarButtonClicked('corespring-ordering')">Ordering</a>
+</li>
+
+<li>
+ <a ng-click="toolbarButtonClicked('corespring-drag-and-drop-inline')">Fill in the Blank</a>
+</li>
+<li>
+ <a ng-click="toolbarButtonClicked('corespring-drag-and-drop-categorize')">Categorize</a>
+</li>
+<li class="dropdown-header"><b>Text Entry</b></li><li>
+ <a ng-click="toolbarButtonClicked('corespring-text-entry')">Short Answer</a>
+</li>
+<li>
+ <a ng-click="toolbarButtonClicked('corespring-extended-text-entry')">Open Ended Answer</a>
+</li>
+<li class="dropdown-header"><b>Mathematics</b></li><li>
+ <a ng-click="toolbarButtonClicked('corespring-point-intercept')">Plot Points</a>
+</li>
+<li>
+ <a ng-click="toolbarButtonClicked('corespring-line')">Graph Lines</a>
+</li>
+<li>
+ <a ng-click="toolbarButtonClicked('corespring-function-entry')">Evaluate an Equation</a>
+</li>
+<li class="dropdown-header"><b>English Language Arts</b></li><li>
+ <a ng-click="toolbarButtonClicked('corespring-select-text')">Select Evidence in Text</a>
+</li>
+
+  </ul>
+</div> <div class="btn-group">
+<button class="btn btn-default btn-sm btn-small" tabindex="-1" ng-click="toolbarButtonClicked('mathjax')">
+<i class="fa math-sum"></i>
+</button>
+</div> <div class="btn-group">
+<button class="btn btn-default btn-sm btn-small" tabindex="-1" ng-click="toolbarButtonClicked('footnotes')">
+Footnote
+</button>
+</div> <div class="btn-group">
+<button class="btn btn-default btn-sm btn-small" tabindex="-1" ng-click="toolbarButtonClicked('corespring-video')">
+<i class="fa fa-film"></i>
+</button>
+</div> <div class="btn-group">
+<button class="btn btn-default btn-sm btn-small" tabindex="-1" ng-click="toolbarButtonClicked('a')">
+<i class="fa fa-link"></i>
+</button>
+</div></div> 
+      </div><!-- nav-container -->
+</div>
+
+<div id="edit-item" class="row">
+    <!-- edit item -->
+    <div class="col-md-12 content" style="display: block;">
+      <div id="editPreview" class="preview-panel {title:'Item Preview ', url:'parts/edit-item-preview.html'}"></div>
+      <p>Henry read a 60-page book in 120 minutes. This graph shows the number of pages he read over time.</p>
+      <img src="graph-edit.png">
+    </div>
+</div><!-- edit-item -->
+
+  <!-- profile -->
+  <div id="profile" class="content">
+    <div class="page-header">
+      <h1>Profile</h1>
+    </div>
+    <img src="edit-profile.png">
+    <div class="col-md-10">
+     
+    </div>
+    <div id="profilePreview" class="preview-panel {title:'Profile Preview ', url:'parts/profile-preview.html'}"></div>
+  </div>
+  <!-- metadata -->
+  <div id="metadata" class="content">
+    <div class="page-header">
+      <h1>Additional Metadata</h1>
+    </div>
+
+  </div>
+
+  <!-- edit filename 1 -->
+  <div id="filename1" class="content">
+    <div class="page-header">
+      <h1>Filename 1</h1>
+    </div>
+    <!-- title -->
+    <form class="form-horizontal" role="form">
+      <div class="form-group">
+        <label for="inputEmail3" class="col-sm-2 control-label">Title</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="inputEmail3" placeholder="Filename1">
+        </div>
+      </div>
+
+      <!-- type -->
+      <div class="form-group">
+          <label for="inputPassword3" class="col-sm-2 control-label">Type</label>
+          <div class="col-sm-10 dropdown" id="menu-supporting-material">
+            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" value="testing">
+              Select Type of Supporting Material
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Rubric</a></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Scoring Guide</a></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Student Materials</a></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Student Work Examples</a></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Other</a></li>
+            </ul>
+          </div>
+      </div>
+
+      <!-- file name -->
+      <div class="form-group">
+        <label for="inputPassword3" class="col-sm-2 control-label">File Name</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="inputPassword3" placeholder="Filename1.pdf">
+        </div>
+      </div>
+
+      <!-- file size -->
+      <div class="form-group">
+        <label for="inputPassword3" class="col-sm-2 control-label">File Size</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="inputPassword3" placeholder="81.11kb">
+        </div>
+      </div>
+
+
+    </form>
+
+      <div id="filename1Preview" class="preview-panel {title:'Filename1 Preview ', url:'parts/filename1-preview.html'}"></div>
+  </div>
+
+  <!-- edit filename 2 -->
+  <div id="filename2" class="content">
+    <div class="page-header">
+      <h1>Filename 2</h1>
+    </div>
+
+    <form class="form-horizontal" role="form">
+      <div class="form-group">
+        <label for="" class="col-sm-2 control-label">Title</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="" placeholder="Filename2">
+        </div>
+      </div>
+
+      <!-- type -->
+      <div class="form-group">
+          <label for="inputPassword3" class="col-sm-2 control-label">Type</label>
+          <div class="col-sm-10 dropdown" id="menu-supporting-material">
+            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" value="testing">
+              Select Type of Supporting Material
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Rubric</a></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Scoring Guide</a></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Student Materials</a></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Student Work Examples</a></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Other</a></li>
+            </ul>
+          </div>
+      </div>
+
+    </form>
+    <p>This is content that goes here for Filename 2.</p>
+      <div id="filename2Preview" class="preview-panel {title:'Filename2 Preview ', url:'parts/filename2-preview.html'}"></div>
+
+
+  </div>
+
+  <div id="add-supporting-materials" class="content">
+    <div class="page-header">
+      <h1>Add New Supporting Material</h1>
+    </div>
+    <form class="form-horizontal col-md-6" role="form">
+      <p>When composing an assessment item, it can be useful to include supplemental materials to assist in scoring or classroom discussion.</p>
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-addon">Type:</div>
+          <div class="input-group">
+              <div class="dropdown" id="menu-supporting-material">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" value="testing">
+                  Select Type of Supporting Material
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Rubric</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Scoring Guide</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Teacher Notes</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Handouts</a></li>
+                </ul>
+              </div>
+          </div>
+        </div>
+      </div><!--form-group-->
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-addon">Title:</div>
+          <input id="title" type="text" class="form-control" placeholder="enter title">
+        </div>
+      </div><!--form-group-->
+
+
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-addon">File:</div>
+            <div class="dropdown" id="select-file-type">
+              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+                Select File Type
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><i class="fa fa-file-o"></i>  Create new document</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><i class="fa fa-file-pdf-o"></i>  Upload pdf</a></li>
+              </ul>
+            </div>
+        </div>
+      </div>
+
+      <button class="btn btn-info">submit</button>
+      </form>
+    </div><!-- add-supporting-materials -->
+
+
+  <div id="new-supporting-materials" class="content">
+    <div class="page-header">
+      <h1>New Supporting Material</h1>
+    </div>
+  </div>
+  <div id="scoring" class="row">
+    <!-- scoring -->
+    <div class="col-md-12 content">
+      <div class="page-header">
+      <h1>Scoring</h1>
+    </div>
+    <img src="scoring.png">
+      <div id="scoringPreview" class="preview-panel {title:'Item Preview ', url:'parts/edit-item-preview.html'}"></div>
+    </div>
+</div><!-- scoring -->
+
+  <!-- summary feedback -->
+  <div id="summary-feedback" class="row">
+  <div class="col-md-12 content">
+    <div id="summaryFeedbackPreview" class="preview-panel {title:'Item Preview ', url:'parts/edit-item-preview.html'}"></div>
+    <div class="page-header">
+      <h1>Item Summary Feedback</h1>
+    </div>
+      <div class="main-content col-md-12 col-sm-12">
+          <br />
+          
+          <p>Use this option if you would like to provide summary level feedback for the entire item.</p>
+
+          <div class="formWrapper">
+            <form role="form" class="summary-feedback-form">
+              <div class="checkbox">
+                <input type="checkbox" id="checkbox1">
+                <label for="checkbox1">
+                    Add summary feedback
+                </label>
+              </div>
+            </form>
+          </div>
+
+           <div class="panel panel-default summary-feedback-panel content">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" href="#test"><i class="fa fa-plus-circle"></i> Summary Feedback (optional)</a>
+                </h4>
+              </div><!-- panel-headering-->
+
+              <div id="test" class="panel-collapse collapse">
+                <div class="panel-body">
+
+                  <textarea class="form-control" rows="3"></textarea>
+                  <br />
+                  <div class="toolbar">
+                          <minitoolbar class="ng-scope">
+                            <div class="wiggi-wiz-toolbar ng-scope">
+                              <div class="btn-group">
+                                <button class="btn btn-default btn-sm btn-small" tabindex="-1"><i class="fa fa-bold"></i></button>
+                                <button class="btn btn-default btn-sm btn-small" tabindex="-1"><i class="fa fa-italic"></i></button>
+                              </div>
+                              <div class="btn-group">
+                                <button class="btn btn-default btn-sm btn-small" tabindex="-1"><i class="fa fa-picture-o"></i></button>
+                              </div>
+                            </div>
+                          </minitoolbar>
+                        </div>
+                      </div>
+                </div><!-- panel-body -->
+              </div>
+            </div><!-- panel -->
+      </div><!--col-md-12 col-sm-12 -->
+
+    </div>
+  </div><!--row-->
+  </div>
+
+
+</div>
+</div><!-- container-fluid -->
+
+<!-- modal and dialog -->
+<!-- //rename title -->
+<div class="modal fade" id="myModal">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Rename Item</h4>
+      </div>
+      <div class="modal-body">
+        <label>Enter a new item name:</label>
+        
+
+        <input id="itemName" type="text"></input>
+        <br />
+        <br />
+          <button type="button" class="btn btn-primary" id="save">OK</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        </div>
+      <div class="modal-footer"></div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<div id="dialog" title="Help" style="display:none">
+  <p>This is the default dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the 'x' icon.</p>
+</div>
+
+<!-- open -->
+<div class="modal fade" id="openFileModal">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Open an item</h4>
+      </div>
+      <div class="modal-body">
+        <div class="dropdown" id="menu-supporting-material">
+          <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" value="testing">
+            Select an item to open
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+            <li role="presentation" class="dropdown-header">Collection Name</li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Item 1</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation" class="dropdown-header">Collection Name</li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Item 2</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Item 3</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation" class="dropdown-header">Collection Name</li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Item 4</a></li>
+          </ul>
+        </div>
+        <br />
+          <button type="button" class="btn btn-primary" id="save">Open</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<!-- copy -->
+<div class="modal fade" id="copyFileModal">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Copy document</h4>
+      </div>
+      <div class="modal-body">
+        <label>Enter a new document name:</label>
+        <input id="title" type="text" class="form-control" placeholder="copy of Untitled Item">
+        <br />
+        <button type="button" class="btn btn-primary" id="save">OK</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<!-- delete -->
+<div class="modal fade" id="deleteFileModal">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Delete Item</h4>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to delete this item?</p>
+        <button type="button" class="btn btn-primary" id="save">Yes</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<!-- delete -->
+<div class="modal fade" id="archiveFileModal">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Archive Item</h4>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to archive this item?</p>
+        <button type="button" class="btn btn-primary" id="save">Yes</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div id="elements-dialog" title="Elements" style="display:none">
+<nav class="navbar navbar-default" role="navigation">
+      <!-- We use the fluid option here to avoid overriding the fixed width of a normal container within the narrow content columns. -->
+      <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Profile</a></li>
+            <li><a href="#">Additional Metadata</a></li>
+            <li><a href="#">Add Supporting Materials</a></li>
+            <li><a href="#">Edit eFilename1</a></li>
+            <li><a href="#">Edit Filename 2</a></li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div>
+    </nav>
+    <img src="edit-profile.png" />
+</div><!--elements-dialog-->
+</body>
+</html>
